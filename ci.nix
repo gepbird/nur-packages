@@ -48,8 +48,8 @@ let
 
 in
 rec {
-  buildPkgs = filter isBuildable nurPkgs;
-  cachePkgs = filter isCacheable buildPkgs;
+  buildPkgs = nurPkgs;
+  cachePkgs = buildPkgs;
 
   buildOutputs = concatMap outputsOf buildPkgs;
   cacheOutputs = concatMap outputsOf cachePkgs;
