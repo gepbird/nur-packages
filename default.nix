@@ -13,8 +13,9 @@
   lib = import ./lib { inherit pkgs; }; # functions
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
+  beeper = pkgs.callPackage ./pkgs/beeper { };
 
-  mint-mod-manager = pkgs.callPackage ./pkgs/mint-mod-manager { };
+  #mint-mod-manager = pkgs.callPackage ./pkgs/mint-mod-manager { };
   # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
   # ...
 }

@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - unfree-test
   schedule:
     # rebuild everyday at 4:50
     # TIP: Choose a random time here so not all repositories are build at once:
