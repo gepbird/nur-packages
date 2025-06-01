@@ -13,7 +13,7 @@
 }:
 
 rustPlatform.buildRustPackage rec {
-  pname = "mint-mod-manager";
+  pname = "mint-mod-manager-no-hook";
   version = "0.2.10-unstable-2025-05-04";
 
   src = fetchFromGitHub {
@@ -44,7 +44,9 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-E6pdDUrmmq8EhMFbfP7UTZ1+yysCCn7yc1/MO5jEVEw=";
 
   buildNoDefaultFeatures = true;
-  buildFeatures = [ "oodle_platform_dependent" ]; # remove "hook" which is used for windows
+  # remove "hook" which is used to build a necessary .dll
+  # it requires nightly rust toolchain and mingw windows cross compiler
+  buildFeatures = [ "oodle_platform_dependent" ];
 
   nativeBuildInputs = [
     pkg-config
@@ -69,9 +71,11 @@ rustPlatform.buildRustPackage rec {
   passthru.updateScript = ./update.sh;
 
   meta = {
-    description = "Deep Rock Galactic mod loader and integration";
+    description = "Deep Rock Galactic mod loader and integration (no hook)";
     longDescription = ''
       Mint is a 3rd party mod integration tool for Deep Rock Galactic to download and integrate mods completely externally of the game. This enables more stable mod usage as well as offline mod usage.
+
+      Use mint-mod-manager for personal use. The absence of the hook feature means mod install won't work for the first time, you will get a "Mint hook failed" error in game. With hook, it would install the necessary x3daudio1_7.dll file. This package only exists because it has a simpler build script.
     '';
     homepage = "https://github.com/trumank/mint";
     changelog = "https://github.com/trumank/mint/commit/${src.rev}";
