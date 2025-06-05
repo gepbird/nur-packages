@@ -55,19 +55,15 @@ jobs:
         name: ${{ matrix.cachixName }}
         signingKey: '${{ secrets.CACHIX_SIGNING_KEY }}'
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    # disabling this step is a workaround for passing the CI pipeline
-    # this command works for me locally
-    # in CI this failes when trying to import rust-overlay:
-    # https://github.com/gepbird/nur-packages/actions/runs/15448315151/job/43483799916
-    #- name: Check evaluation
-    #  run: |
-    #    nix-env -f . -qa \* --meta --xml \
-    #      --allowed-uris https://static.rust-lang.org \
-    #      --option restrict-eval true \
-    #      --option allow-import-from-derivation true \
-    #      --drv-path --show-trace \
-    #      -I nixpkgs=$(nix-instantiate --find-file nixpkgs) \
-    #      -I $PWD
+    - name: Check evaluation
+      run: |
+        nix-env -f . -qa \* --meta --xml \
+          --allowed-uris https://static.rust-lang.org \
+          --option restrict-eval true \
+          --option allow-import-from-derivation true \
+          --drv-path --show-trace \
+          -I nixpkgs=$(nix-instantiate --find-file nixpkgs) \
+          -I $PWD
     - name: Build nix packages
       run: nix shell -f '<nixpkgs>' nix-build-uncached -c nix-build-uncached ci.nix -A cacheOutputs
     - name: Trigger NUR update
