@@ -1,4 +1,5 @@
 {
+  pkgs,
   lib,
   fetchFromGitHub,
   pkgsCross,
@@ -11,12 +12,7 @@
   atk,
   libxkbcommon,
   wayland,
-
-  # dependencies of rust-overlay
-  stdenv,
-  callPackage,
-  fetchurl,
-}@pkgs:
+}:
 
 let
   # TODO: check if using rust-overlay as a flake input would work with NUR
