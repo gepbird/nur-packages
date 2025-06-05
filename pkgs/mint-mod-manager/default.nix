@@ -15,14 +15,7 @@
 }:
 
 let
-  # TODO: check if using rust-overlay as a flake input would work with NUR
-  rust-overlay-src = fetchFromGitHub {
-    owner = "oxalica";
-    repo = "rust-overlay";
-    rev = "bd32e88bef6da0e021a42fb4120a8df2150e9b8c";
-    hash = "sha256-wMvMBMlpS1H8CQdSSgpLeoCWS67ciEkN/GVCcwk7Apc=";
-  };
-  rust-overlay = import rust-overlay-src (
+  rust-overlay = import ./rust-overlay (
     pkgs
     // {
       inherit (rust-overlay) rust-bin;
