@@ -1,0 +1,21 @@
+From ce0fd2cf964084d490660b94abd60dda573d7d7a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Gutyina=20Gerg=C5=91?= <gutyina.gergo.2@gmail.com>
+Date: Sun, 3 Aug 2025 21:50:29 +0200
+Subject: [PATCH 2/2] Drop let_chains feature opt-in as it is in stable
+
+---
+ src/lib.rs | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/src/lib.rs b/src/lib.rs
+index a91fe47..362722f 100644
+--- a/src/lib.rs
++++ b/src/lib.rs
+@@ -1,4 +1,3 @@
+-#![feature(let_chains)]
+ // TODO: enable when stabilized: https://github.com/rust-lang/rust/issues/51114
+ //#![feature(if_let_guard)]
+ 
+-- 
+2.50.1
+

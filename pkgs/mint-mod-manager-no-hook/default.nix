@@ -31,8 +31,8 @@ rustPlatform.buildRustPackage rec {
   patches = [
     # https://github.com/rust-lang/rust/issues/51114
     ./0001-Drop-usage-of-unstable-if_let_guard-feature.patch
-    # TODO: remove in rust 1.88.0: https://github.com/rust-lang/rust/pull/132833
-    ./0002-Drop-usage-of-unstable-let_chains-feature.patch
+    # can be upstreamed, only valid from rust >=1.88.0 with edition >=2024
+    ./0002-Drop-let_chains-feature-opt-in-as-it-is-in-stable.patch
   ];
 
   preConfigure = ''
