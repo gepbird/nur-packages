@@ -3,8 +3,11 @@ on:
   workflow_dispatch:
   schedule:
     - cron: "0 16 * * *"
-  # this allows the workflow to show up when it's not on main yet
+  # these allow the workflow to show up when it's not on main yet
   pull_request:
+  push:
+    branches:
+      - '**'
 jobs:
   updateFlakePackages:
     runs-on: ubuntu-latest
