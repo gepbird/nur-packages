@@ -17,4 +17,6 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v20
       - name: Update flake packages
-        uses: selfuryon/nix-update-action@v1.1.0
+        #uses: selfuryon/nix-update-action@v1.1.0
+        # this updates the nix-install-pkgs-action, older version no longer worked
+        uses: kristoff3r/nix-update-action@d2775de7420932c4e04d29672e28b59378ff8c71
