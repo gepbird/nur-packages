@@ -21,3 +21,5 @@ jobs:
         #uses: selfuryon/nix-update-action@v1.1.0
         # this updates the nix-install-pkgs-action, older version no longer worked
         uses: gepbird/nix-update-action@bump-actions
+        with:
+          blacklist: "orb-forge-gui"
