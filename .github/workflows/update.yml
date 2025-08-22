@@ -17,8 +17,7 @@ jobs:
       - name: Install Nix
         #uses: cachix/install-nix-action@v20
         uses: cachix/install-nix-action@v31
-      - uses: yaxitech/nix-install-pkgs-action@v5
-        with:
-          packages: "nixpkgs#hello"
-      - run: |
-          hello
+      - name: Update flake packages
+        #uses: selfuryon/nix-update-action@v1.1.0
+        # this updates the nix-install-pkgs-action, older version no longer worked
+        uses: gepbird/nix-update-action@bump-actions
