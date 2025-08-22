@@ -17,9 +17,8 @@ jobs:
       - name: Install Nix
         #uses: cachix/install-nix-action@v20
         uses: cachix/install-nix-action@v31
-      - uses: yaxitech/nix-install-pkgs-action@v5
+      - uses: yaxitech/nix-install-pkgs-action@v6
         with:
-          packages: "nixpkgs#hello, figlet"
+          packages: "nixpkgs#hello"
       - run: |
           hello
-          figlet "Hello nix-install-pkgs-action!"
