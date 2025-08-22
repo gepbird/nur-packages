@@ -22,4 +22,4 @@ jobs:
         # this updates the nix-install-pkgs-action, older version no longer worked
         uses: gepbird/nix-update-action@bump-actions
         with:
-          blacklist: "orb-forge-gui"
+          blacklist: "orb-forge-gui,mint-mod-manager,mint-mod-manager-no-hook"
