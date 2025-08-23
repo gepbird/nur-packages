@@ -12,6 +12,7 @@
   atk,
   libxkbcommon,
   wayland,
+  nix-update-script,
 }:
 
 let
@@ -96,7 +97,11 @@ rustPlatform.buildRustPackage rec {
       --prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}"
   '';
 
-  passthru.updateScript = ./update.sh;
+  passthru.updateScript = nix-update-script {
+    extraArgs = [
+      "--version=branch"
+    ];
+  };
 
   meta = {
     description = "Deep Rock Galactic mod loader and integration";
