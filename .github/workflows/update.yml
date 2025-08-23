@@ -1,4 +1,5 @@
 name: "Update Flake Packages ❄️"
+
 on:
   workflow_dispatch:
   schedule:
@@ -8,6 +9,10 @@ on:
   push:
     branches:
       - '**'
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   updateFlakePackages:
     runs-on: ubuntu-latest
