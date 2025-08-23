@@ -1,5 +1,4 @@
 name: "Update Flake Packages ❄️"
-
 on:
   workflow_dispatch:
   schedule:
@@ -12,7 +11,6 @@ on:
 permissions:
   contents: write
   pull-requests: write
-
 jobs:
   updateFlakePackages:
     runs-on: ubuntu-latest
@@ -22,9 +20,6 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v31.5.2
       - name: Update flake packages
-        #uses: selfuryon/nix-update-action@v1.1.0
-        # this updates the nix-install-pkgs-action, older version no longer worked
-        uses: gepbird/nix-update-action@95ce2cbe3360ba51481010d153fe5bc440413c03
+        uses: gepbird/nix-update-action@v2
         with:
-          blacklist: "orb-forge-gui,mint-mod-manager,mint-mod-manager-no-hook"
-
+          blacklist: "orb-forge-gui"
