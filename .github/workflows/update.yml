@@ -20,6 +20,6 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v31.5.2
       - name: Update flake packages
-        uses: gepbird/nix-update-action@5b67ce446af4615830a8be7052d409272e01b21f
+        uses: gepbird/nix-update-action@8bdd4748b91aeb81989a6f35dc2b7a1d75d9a135
         with:
           blacklist: "orb-forge-gui"
