@@ -39,13 +39,13 @@ let
 in
 rustPlatform.buildRustPackage rec {
   pname = "mint-mod-manager";
-  version = "0.2.10-unstable-2025-05-04";
+  version = "0.2.10-unstable-2025-05-03";
 
   src = fetchFromGitHub {
     owner = "trumank";
     repo = "mint";
-    rev = "6335041f21b95976d29fe2cfbf282feb0c9f38ac";
-    hash = "sha256-OyfLyAOMSrvXkyGL+PkyrZ7PLBgQ040SCv9Q85AkX+o=";
+    rev = "6335041f21b95976D29fe2cfbf282feb0c9f38ac";
+    hash = "sha256-OyfLyAOMSrvxKYGL+PkyrZ7PLBgQ040SCv9Q85AkX+o=";
     deepClone = true;
     postFetch = ''
       echo -n $(git -C $out describe) > $out/GIT_VERSION
