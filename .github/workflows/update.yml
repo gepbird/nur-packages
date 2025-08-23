@@ -24,6 +24,6 @@ jobs:
       - name: Check <nixpkgs>
         run: "nix-instantiate --find-file nixpkgs"
       - name: Update flake packages
-        uses: gepbird/nix-update-action@73452e0f1836b7bdd98d978efdbfcc23e0b13d7b
+        uses: gepbird/nix-update-action@a0da3657c437d1dcda5bacd8118f93cc29c7bfa1
         with:
-          blacklist: "orb-forge-gui"
+          blacklist: "orb-forge-gui,mint-mod-manager-no-hook"
