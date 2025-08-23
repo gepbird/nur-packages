@@ -96,6 +96,8 @@ rustPlatform.buildRustPackage rec {
       --prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}"
   '';
 
+  passthru.updateScript = ./update.sh;
+
   meta = {
     description = "Deep Rock Galactic mod loader and integration";
     longDescription = ''
