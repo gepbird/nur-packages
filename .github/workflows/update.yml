@@ -18,14 +18,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
       - name: Install Nix
-        #uses: cachix/install-nix-action@v20
-        uses: cachix/install-nix-action@v31
+        uses: cachix/install-nix-action@v31.5.2
       - name: Update flake packages
         #uses: selfuryon/nix-update-action@v1.1.0
         # this updates the nix-install-pkgs-action, older version no longer worked
-        uses: gepbird/nix-update-action@5f19de3fe327c147fa42794e255901f93f89544f
+        uses: gepbird/nix-update-action@95ce2cbe3360ba51481010d153fe5bc440413c03
         with:
           blacklist: "orb-forge-gui,mint-mod-manager,mint-mod-manager-no-hook"
 
