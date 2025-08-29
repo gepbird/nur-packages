@@ -18,8 +18,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v5
       - name: Install Nix
-        with:
-          nix_path: "nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-unstable.tar.gz"
         uses: cachix/install-nix-action@v31.5.2
       - name: Check <nixpkgs>
         run: "nix-instantiate --find-file nixpkgs"
