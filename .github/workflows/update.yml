@@ -27,4 +27,4 @@ jobs:
         #uses: gepbird/nix-update-action@a0da3657c437d1dcda5bacd8118f93cc29c7bfa1
         uses: ./.github/actions/nix-update-action
         with:
-          blacklist: "orb-forge-gui,mint-mod-manager-no-hook"
+          blacklist: "orb-forge-gui,mint-mod-manager-no-hook,mint-mod-manager"
