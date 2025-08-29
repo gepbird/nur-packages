@@ -19,8 +19,6 @@ jobs:
         uses: actions/checkout@v5
       - name: Install Nix
         uses: cachix/install-nix-action@v31.5.2
-      - name: Check <nixpkgs>
-        run: "nix-instantiate --find-file nixpkgs"
       - name: Update flake packages
         uses: gepbird/nix-update-action@4f50e6c53013ec43f2f6536a19330e82f505936b
         #uses: ./.github/actions/nix-update-action
