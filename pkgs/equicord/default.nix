@@ -23,6 +23,12 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-eaTcPcLlSlabZpMakMjIj3J1OpPqhl5qPt3sVycRJxQ=";
   };
 
+  pnpmDeps = pnpm_10.fetchDeps {
+    inherit (finalAttrs) pname version src;
+    fetcherVersion = 1;
+    hash = "sha256-xVnryPA7+gnRvpMzuFJl4YeEPOky2+iOu76V3Rf6bow=";
+  };
+
   nativeBuildInputs = [
     git
     nodejs
