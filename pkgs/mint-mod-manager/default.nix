@@ -32,9 +32,6 @@ let
     cargo = rustToolchain;
     rustc = rustToolchain;
   };
-
-  mingwPkgs = pkgsCross.mingwW64;
-  mingwCompiler = mingwPkgs.buildPackages.gcc;
 in
 rustPlatform.buildRustPackage rec {
   pname = "mint-mod-manager";
@@ -53,51 +50,4 @@ rustPlatform.buildRustPackage rec {
   };
 
   cargoHash = "sha256-E6pdDUrmmq8EhMFbfP7UTZ1+yysCCn7yc1/MO5jEVEw=";
-
-  # Necessary for cross compiled build scripts, otherwise it will build as ELF format
-  # https://docs.rs/cc/latest/cc/#external-configuration-via-environment-variables
-  CC_x86_64_pc_windows_gnu = "${mingwCompiler}/bin/${mingwCompiler.targetPrefix}cc";
-
-  preConfigure = ''
-    export CARGO_TARGET_X86_64_PC_WINDOWS_GNU_RUSTFLAGS="-L ${mingwPkgs.windows.pthreads}/lib";
-    export BUILT_OVERRIDE_mint_lib_GIT_VERSION=unstable
-  '';
-
-  nativeBuildInputs = [
-    mingwCompiler
-    pkg-config
-    makeWrapper
-  ];
-
-  buildInputs = [
-    gtk3
-    libGL
-    openssl
-    atk
-    libxkbcommon
-    wayland
-  ];
-
-  postInstall = ''
-    wrapProgram $out/bin/mint \
-      --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath buildInputs}" \
-      --prefix XDG_DATA_DIRS : "${gtk3}/share/gsettings-schemas/${gtk3.name}"
-  '';
-
-  passthru.updateScript = ./update.sh;
-
-  meta = {
-    description = "Deep Rock Galactic mod loader and integration";
-    longDescription = ''
-      Mint is a 3rd party mod integration tool for Deep Rock Galactic to download and integrate mods completely externally of the game. This enables more stable mod usage as well as offline mod usage.
-    '';
-    homepage = "https://github.com/trumank/mint";
-    changelog = "https://github.com/trumank/mint/commit/${src.rev}";
-    license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [
-      gepbird
-    ];
-    mainProgram = "mint";
-    platforms = [ "x86_64-linux" ];
-  };
 }
