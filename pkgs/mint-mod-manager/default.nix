@@ -25,7 +25,6 @@ let
   rustToolchain = rust-overlay.rust-bin.selectLatestNightlyWith (
     toolchain:
     toolchain.minimal.override {
-      targets = [ "x86_64-pc-windows-gnu" ];
     }
   );
   rustPlatform = makeRustPlatform {
