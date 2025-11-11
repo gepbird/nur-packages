@@ -24,4 +24,6 @@
 
   # TODO: package properly
   go-foks = import ./pkgs/go-foks pkgs;
+
+  lix-curl-patched = import ./pkgs/lix-curl-patched;
 }
