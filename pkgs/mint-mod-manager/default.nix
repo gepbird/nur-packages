@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  fetchzip,
   fetchFromGitHub,
   pkgsCross,
   makeRustPlatform,
@@ -38,9 +37,9 @@ let
   # /nix/store/7via7kz8xlfwimvmpncf8ldda8chjpsc-x86_64-w64-mingw32-binutils-2.44/bin/x86_64-w64-mingw32-ld: cannot find -l:libpthread.a: No such file or directory
   pkgs' =
     import
-      (fetchzip {
+      (builtins.fetchTarball {
         url = "https://github.com/NixOS/nixpkgs/archive/878e468e02bfabeda08c79250f7ad583037f2227.tar.gz";
-        hash = "sha256-FHsEKDvfWpzdADWj99z7vBk4D716Ujdyveo5+A048aI=";
+        sha256 = "sha256:18pi706zhfgapmr3flkspl7kh6dwzgfgg8rm03frqnnz7cl08yql";
       })
       {
         inherit (pkgs.stdenv.hostPlatform) system;
