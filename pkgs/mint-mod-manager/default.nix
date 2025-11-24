@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  fetchzip,
   fetchFromGitHub,
   pkgsCross,
   makeRustPlatform,
@@ -28,10 +29,22 @@ let
       targets = [ "x86_64-pc-windows-gnu" ];
     }
   );
-  rustPlatform = makeRustPlatform {
+  rustPlatform = pkgs'.makeRustPlatform {
     cargo = rustToolchain;
     rustc = rustToolchain;
   };
+
+  # TODO: remove this
+  # /nix/store/7via7kz8xlfwimvmpncf8ldda8chjpsc-x86_64-w64-mingw32-binutils-2.44/bin/x86_64-w64-mingw32-ld: cannot find -l:libpthread.a: No such file or directory
+  pkgs' =
+    import
+      (fetchzip {
+        url = "https://github.com/NixOS/nixpkgs/archive/878e468e02bfabeda08c79250f7ad583037f2227.tar.gz";
+        hash = "sha256-FHsEKDvfWpzdADWj99z7vBk4D716Ujdyveo5+A048aI=";
+      })
+      {
+        inherit (pkgs.stdenv.hostPlatform) system;
+      };
 
   mingwPkgs = pkgsCross.mingwW64;
   mingwCompiler = mingwPkgs.buildPackages.gcc;
