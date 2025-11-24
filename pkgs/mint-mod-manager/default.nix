@@ -28,22 +28,10 @@ let
       targets = [ "x86_64-pc-windows-gnu" ];
     }
   );
-  rustPlatform = pkgs'.makeRustPlatform {
+  rustPlatform = makeRustPlatform {
     cargo = rustToolchain;
     rustc = rustToolchain;
   };
-
-  # TODO: remove this
-  # /nix/store/7via7kz8xlfwimvmpncf8ldda8chjpsc-x86_64-w64-mingw32-binutils-2.44/bin/x86_64-w64-mingw32-ld: cannot find -l:libpthread.a: No such file or directory
-  pkgs' =
-    import
-      (builtins.fetchTarball {
-        url = "https://github.com/NixOS/nixpkgs/archive/878e468e02bfabeda08c79250f7ad583037f2227.tar.gz";
-        sha256 = "sha256:18pi706zhfgapmr3flkspl7kh6dwzgfgg8rm03frqnnz7cl08yql";
-      })
-      {
-        inherit (pkgs.stdenv.hostPlatform) system;
-      };
 
   mingwPkgs = pkgsCross.mingwW64;
   mingwCompiler = mingwPkgs.buildPackages.gcc;
@@ -78,6 +66,9 @@ rustPlatform.buildRustPackage rec {
   CC_x86_64_pc_windows_gnu = "${mingwCompiler}/bin/${mingwCompiler.targetPrefix}cc";
 
   preConfigure = ''
+    # workaround for https://github.com/NixOS/nixpkgs/pull/435278#issuecomment-3572538333
+    unset RUSTFLAGS
+
     export CARGO_TARGET_X86_64_PC_WINDOWS_GNU_RUSTFLAGS="-L ${mingwPkgs.windows.pthreads}/lib";
     export BUILT_OVERRIDE_mint_lib_GIT_VERSION=unstable
   '';
