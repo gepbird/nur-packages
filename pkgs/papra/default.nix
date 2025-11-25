@@ -14,7 +14,7 @@ with pkgs;
 
 stdenv.mkDerivation (finalAttrs: {
   pname = "papra";
-  version = "unstable";
+  version = "@papra/webhooks@0.3.1";
 
   src = fetchFromGitHub {
     owner = "papra-hq";
