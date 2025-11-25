@@ -3,16 +3,16 @@ with pkgs;
 
 buildGoModule (finalAttrs: {
   pname = "go-foks";
-  version = "0.1.2";
+  version = "0.1.5";
 
   src = fetchFromGitHub {
     owner = "foks-proj";
     repo = "go-foks";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-BeDhq+963G7OA164HcBJ8njfwPhRbMxPuckk7V538WI=";
+    hash = "sha256-/+Z/afzj5y4CVU3qRymSIUzCabT2jAEBlKKoYgKlPRE=";
   };
 
-  vendorHash = "sha256-8/SVOWMoCfeiuH2As2cC/HLRs1WQIQ4/Ko1olXDq6bo=";
+  vendorHash = "sha256-nTHsYMQjVaQM+g2MM++/BDVYfzIM4CaMM6eK5GQE6Cc=";
 
   nativeBuildInputs = [
     pkg-config
