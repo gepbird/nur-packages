@@ -14,8 +14,6 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  beeper = pkgs.callPackage ./pkgs/beeper { };
-
   equicord = pkgs.callPackage ./pkgs/equicord { };
 
   mint-mod-manager = pkgs.callPackage ./pkgs/mint-mod-manager { };
