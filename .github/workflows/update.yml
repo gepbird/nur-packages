@@ -22,7 +22,7 @@ jobs:
         with:
           nix_path: "nixpkgs=https://github.com/NixOS/nixpkgs/archive/refs/heads/nixos-unstable.tar.gz"
       - name: Update flake packages
-        #uses: gepbird/nix-update-action@v2
-        uses: ./.github/actions/nix-update-action
+        uses: gepbird/nix-update-action@v2.1.1
+        #uses: ./.github/actions/nix-update-action
         with:
           blacklist: "orb-forge-gui,mint-mod-manager-no-hook,mint-mod-manager,papra"
