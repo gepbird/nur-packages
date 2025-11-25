@@ -25,4 +25,4 @@ jobs:
         #uses: gepbird/nix-update-action@v2
         uses: ./.github/actions/nix-update-action
         with:
-          blacklist: "orb-forge-gui,mint-mod-manager-no-hook,mint-mod-manager"
+          blacklist: "orb-forge-gui,mint-mod-manager-no-hook,mint-mod-manager,papra"
