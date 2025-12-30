@@ -44,7 +44,7 @@ rustPlatform.buildRustPackage rec {
     owner = "trumank";
     repo = "mint";
     rev = "57aa964e7789f132481813a8f4b5781f924eccd1";
-    hash = "sha256-jCurzS/Is3Jcm0AGp6O9z+a6TG+qKH++yfe6mjTjAxg=";
+    hash = "sha256-gpOakUrcR2ByFFiiiYklO1rXKghaIIerxUR8rc4T5BQ=";
     deepClone = true;
     postFetch = ''
       echo -n $(git -C $out describe) > $out/GIT_VERSION
