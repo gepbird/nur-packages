@@ -28,6 +28,9 @@ let
       ];
   });
 in
-xfce4-terminal.override {
+(xfce4-terminal.override {
   vte = vte-sixel;
-}
+}).overrideAttrs
+  (old: {
+    pname = "xfce4-terminal-sixel";
+  })
