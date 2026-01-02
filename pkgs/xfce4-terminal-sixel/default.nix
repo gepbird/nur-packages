@@ -2,7 +2,7 @@
   fetchFromGitHub,
   lib,
   vte,
-  xfce,
+  xfce4-terminal,
 }:
 
 let
@@ -28,6 +28,6 @@ let
       ];
   });
 in
-xfce.xfce4-terminal.override {
+xfce4-terminal.override {
   vte = vte-sixel;
 }
