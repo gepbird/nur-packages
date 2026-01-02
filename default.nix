@@ -23,7 +23,4 @@
 
   # TODO: package properly
   papra = import ./pkgs/papra pkgs;
-
-  # TODO: package properly
-  go-foks = import ./pkgs/go-foks pkgs;
 }
