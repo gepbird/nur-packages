@@ -67,10 +67,13 @@ rustPlatform.buildRustPackage (finalAttrs: {
     # Necessary for cross compiled build scripts, otherwise it will build as ELF format
     # https://docs.rs/cc/latest/cc/#external-configuration-via-environment-variables
     CC_x86_64_pc_windows_gnu = "${mingwCompiler}/bin/${mingwCompiler.targetPrefix}cc";
-
     CARGO_TARGET_X86_64_PC_WINDOWS_GNU_RUSTFLAGS = "-L ${mingwPkgs.windows.pthreads}/lib";
-    BUILT_OVERRIDE_mint_lib_GIT_VERSION = "unstable";
   };
+
+  preConfigure = ''
+    export BUILT_OVERRIDE_mint_lib_GIT_VERSION=$(cat GIT_VERSION)
+    echo "Using mint_lib GIT_VERSION: $BUILT_OVERRIDE_mint_lib_GIT_VERSION"
+  '';
 
   nativeBuildInputs = [
     mingwCompiler
