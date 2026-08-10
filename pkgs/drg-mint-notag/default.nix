@@ -85,16 +85,16 @@ let
 in
 rustPlatform.buildRustPackage (finalAttrs: {
   pname = "drg-mint-notag";
-  version = "0.3.3";
+  version = "0.3.4";
 
   src = fetchFromGitHub {
     owner = "Strappazzon";
     repo = "drg-mint-notag";
     tag = "v${finalAttrs.version}";
-    hash = "sha256-+iOQ544UIXNpXZWeof49F3m9byeXwJKAui7JIsRWKHA=";
+    hash = "sha256-hXMMxryQb/pzuHUdJ0NyyUPb51omYdGYV8hItIOFT9w=";
   };
 
-  cargoHash = "sha256-X3y7X9jh8XjSTu3ErFto7Kk+nZc5//8pAmbhfVDgHJc=";
+  cargoHash = "sha256-QGjZLgEDf4QtpRjJRCEfBukVEeQcCDgvQDWM/HZB6vE=";
 
   env = {
     # Necessary for cross compiled build scripts, otherwise it will build as ELF format
