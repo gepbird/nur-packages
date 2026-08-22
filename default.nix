@@ -25,4 +25,6 @@
   orb-forge-gui = pkgs.callPackage ./pkgs/orb-forge-gui { };
 
   hytale-launcher = pkgs.callPackage ./pkgs/hytale-launcher { };
+
+  soloist = pkgs.callPackage ./pkgs/soloist { };
 }
