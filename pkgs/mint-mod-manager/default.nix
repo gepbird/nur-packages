@@ -13,6 +13,7 @@
   atk,
   libxkbcommon,
   wayland,
+  libgit2,
 }:
 
 let
@@ -75,6 +76,13 @@ rustPlatform.buildRustPackage (finalAttrs: {
     echo "Using mint_lib GIT_VERSION: $BUILT_OVERRIDE_mint_lib_GIT_VERSION"
   '';
 
+  # nixpkgs' cargoUseSystemLibs (https://github.com/NixOS/nixpkgs/pull/537108) makes zstd-sys
+  # link against the system zstd via pkg-config, but here zstd-sys is built for the
+  # x86_64-pc-windows-gnu target, where pkg-config isn't set up. Build the bundled zstd instead.
+  preBuild = ''
+    unset ZSTD_SYS_USE_PKG_CONFIG
+  '';
+
   nativeBuildInputs = [
     mingwCompiler
     pkg-config
@@ -88,6 +96,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     atk
     libxkbcommon
     wayland
+    libgit2
   ];
 
   postInstall = ''
