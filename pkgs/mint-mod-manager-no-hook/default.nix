@@ -40,12 +40,15 @@ rustPlatform.buildRustPackage (finalAttrs: {
     })
   ];
 
+  cargoHash = "sha256-5EYSiUTa50gMu2YHx6COVJU+8IFuvc5td/9TzygpeaY=";
+
+  strictDeps = true;
+  __structuredAttrs = true;
+
   preConfigure = ''
     export BUILT_OVERRIDE_mint_lib_GIT_VERSION=$(cat GIT_VERSION)
     echo "Using mint_lib GIT_VERSION: $BUILT_OVERRIDE_mint_lib_GIT_VERSION"
   '';
-
-  cargoHash = "sha256-5EYSiUTa50gMu2YHx6COVJU+8IFuvc5td/9TzygpeaY=";
 
   # remove "hook" which is used to build a necessary .dll
   # it requires nightly rust toolchain and mingw windows cross compiler
