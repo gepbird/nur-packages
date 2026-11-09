@@ -11,6 +11,7 @@
   atk,
   libxkbcommon,
   wayland,
+  libgit2,
 }:
 
 rustPlatform.buildRustPackage (finalAttrs: {
@@ -62,6 +63,7 @@ rustPlatform.buildRustPackage (finalAttrs: {
     atk
     libxkbcommon
     wayland
+    libgit2
   ];
 
   postInstall = ''
