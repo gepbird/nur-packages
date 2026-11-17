@@ -23,4 +23,6 @@
   xfce4-terminal-sixel = pkgs.callPackage ./pkgs/xfce4-terminal-sixel { };
 
   orb-forge-gui = pkgs.callPackage ./pkgs/orb-forge-gui { };
+
+  lumo-desktop = pkgs.callPackage ./pkgs/lumo-desktop { };
 }

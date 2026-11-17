@@ -1,0 +1,29 @@
+--- a/src-tauri/src/app.rs
++++ b/src-tauri/src/app.rs
+@@ -238 +238 @@
+-            updater::startup(app.handle());
++            main_window::show(app.handle()).map_err(std::io::Error::other)?;
+--- a/src-tauri/src/tray.rs
++++ b/src-tauri/src/tray.rs
+@@ -10 +10 @@
+-use crate::{main_window, settings, updater};
++use crate::{main_window, settings};
+@@ -46,7 +45,0 @@
+-    let update_item = MenuItem::with_id(
+-        app,
+-        "check-updates",
+-        "Check for Updates",
+-        true,
+-        None::<&str>,
+-    )?;
+@@ -66 +58,0 @@
+-            &update_item,
+@@ -99 +90,0 @@
+-            &update_item,
+@@ -124,6 +114,0 @@
+-        "check-updates" => {
+-            let handle = app_handle.clone();
+-            tauri::async_runtime::spawn(async move {
+-                updater::check_and_prompt(&handle).await;
+-            });
+-        }
